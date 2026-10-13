@@ -71,35 +71,28 @@
     return measures;
   }
   function reflowEvents(events, cap) {
-    const measures=intoMeasures(events);
-    const rows=[];let curr=[];let used=0;
-    const push=()=>{if(curr.length){rows.push(curr);curr=[];used=0;}};
-    for (const measure of measures){
-      const measureWidth=measure.reduce((sum,e)=>sum+preferredWidth(e),0);
-      if (measureWidth<=cap){
-        if (used+measureWidth>cap && curr.length)push();
-        curr.push(...measure);used+=measureWidth;
-      } else {
-        // A measure can be longer than a phone screen. Split only at note boundaries.
-        for(const e of measure){
-          const w=Math.min(preferredWidth(e),cap);
-          if(used+w>cap && curr.length) push();
-          curr.push(e);used+=w;
-        }
+    if(!events.length)return [];
+    const widths=events.map(event=>Math.min(preferredWidth(event),cap));
+    const count=events.length;
+    const best=Array(count+1).fill(Infinity);const next=Array(count).fill(count);
+    best[count]=0;
+    // Choose visual lines globally. A barline is preferred, but never at the
+    // expense of leaving a large unusable blank area on a narrow screen.
+    for(let start=count-1;start>=0;start--){
+      let used=0;
+      for(let end=start;end<count;end++){
+        if(used+widths[end]>cap && end>start)break;
+        used+=widths[end];
+        const following=end+1;
+        const remaining=Math.max(0,cap-used);
+        let cost=remaining*remaining;
+        if(following<count && !events[following].bar)cost+=cap*cap*.035;
+        if(following===count && end-start<2 && start>0)cost+=cap*cap*.18;
+        cost+=best[following];
+        if(cost<best[start]){best[start]=cost;next[start]=following;}
       }
     }
-    push();
-    // Avoid a final "orphan" with only one sung syllable on its own line.
-    // Moving whole note events preserves S/A/lyrics/T/B alignment.
-    if (rows.length>1) {
-      const last=rows.at(-1), prior=rows.at(-2);
-      let lastWidth=last.reduce((n,e)=>n+preferredWidth(e),0);
-      while(last.length<3 && prior.length>3){
-        const candidate=prior.at(-1), w=preferredWidth(candidate);
-        if(lastWidth+w>cap)break;
-        prior.pop();last.unshift(candidate);lastWidth+=w;
-      }
-    }
+    const rows=[];for(let start=0;start<count;){const end=next[start];rows.push(events.slice(start,end));start=end;}
     return rows;
   }
   function makeLine(events, originalSystem, final) {
