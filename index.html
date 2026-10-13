@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f4f7fc">
+  <meta name="description" content="Mobile tonic sol-fa reading prototype of Chin Hymnbook #11. Separate verses, four-part notation, and Nolhnak chorus.">
+  <title>11. KA THLARAU NGAI TUAH! — Chin Hymnbook</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="app">
+  <header class="masthead">
+    <div class="brand-row">
+      <div class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5c-2.5-1.8-6-1.9-9-.9v15c3-.9 6.5-1 9 1 2.5-2 6-1.9 9-1v-15c-3-1-6.5-.9-9 .9Zm0 0v15" stroke-linejoin="round"/></svg>CHIN HYMNBOOK</div>
+      <div class="header-actions"><button id="openImporter" class="new-hymn-button" type="button">＋ New hymn</button><span class="draft-tag">TEST EDITION · 11 / 516</span></div>
+    </div>
+    <div id="hymnNumber" class="hymn-number">11 · Thangthatnak</div>
+    <h1 id="hymnTitle">KA THLARAU NGAI TUAH!</h1>
+    <p id="englishTitle" class="subtitle">Hark, Hark! My Soul!</p>
+    <div class="metadata" aria-label="Hymn information">
+      <div class="meta"><span class="meta-label">Words</span><span id="wordsMeta"></span></div>
+      <div class="meta"><span class="meta-label">Key</span><span id="keyMeta"></span></div>
+      <div class="meta"><span class="meta-label">Scripture</span><strong id="scriptureMeta"></strong></div>
+      <div class="meta"><span class="meta-label">Source</span><span id="sourceMeta"></span></div>
+      <div class="meta wide"><span class="meta-label">Arrangement</span><strong id="arrangersMeta"></strong></div>
+    </div>
+  </header>
+
+  <nav class="tabs-wrap" aria-label="Choose verse or chorus">
+    <div class="tabs" role="tablist" aria-label="Hymn section">
+      <button class="tab" type="button" role="tab" aria-controls="reader" aria-selected="true" data-section="1">Verse 1</button>
+      <button class="tab" type="button" role="tab" aria-controls="reader" aria-selected="false" data-section="2">Verse 2</button>
+      <button class="tab" type="button" role="tab" aria-controls="reader" aria-selected="false" data-section="3">Verse 3</button>
+      <button class="tab" type="button" role="tab" aria-controls="reader" aria-selected="false" data-section="4">Verse 4</button>
+      <button id="chorusTab" class="tab" type="button" role="tab" aria-controls="reader" aria-selected="false" data-section="chorus">Nolhnak</button>
+    </div>
+  </nav>
+
+  <section id="reader" class="reader" role="tabpanel" aria-label="Selected hymn section">
+    <div class="score-head"><span class="section-name" id="sectionName">Verse 1</span><span class="section-caption" id="sectionCaption">Selected verse only · S / A / T / B</span></div>
+    <p id="notice" class="notice" hidden>Verse 4 was printed separately below the music. Its lyrics are preserved, but their note-by-note placement is <strong>provisional</strong> and needs musical proofreading.</p>
+    <div id="score" class="score" aria-label="Tonic sol-fa score"><div class="music-line">Loading notation…</div></div>
+  </section>
+  <details class="helper"><summary>About this test edition and transcription</summary>
+    <p>This functional prototype uses the text and notes from the previously reconstructed SVG of the supplied hymnbook scan—not notes invented by image mockups. Each tab shows only that section. On narrow screens, measures reflow vertically; all four voices remain visible with the lyrics between A and T.</p>
+    <p>The original re-typesetting was manual and has not received musical proofreading. Please compare the notation and Chin lyrics against the source scan before publishing or using it for a performance. Verse 4 is especially provisional in its lyric alignment.</p>
+  </details>
+  <div class="footer-tools" role="group" aria-label="Reading tools">
+    <div class="control-group">
+      <button id="decreaseFont" class="control" type="button" aria-label="Decrease notation size">A−</button>
+      <button id="resetFont" class="control" type="button" aria-label="Reset notation size">Aa</button>
+      <button id="increaseFont" class="control" type="button" aria-label="Increase notation size">A+</button>
+      <span class="font-caption" id="fontCaption" aria-live="polite">18px</span>
+    </div>
+    <div class="control-group">
+      <button id="themeToggle" class="control" type="button" aria-label="Switch to dark mode"><span id="themeIcon">☾</span></button>
+      <button id="openScan" class="control" type="button" aria-label="View original scanned page"><span aria-hidden="true">▤</span><span class="control-text">Scan</span></button>
+      <button id="openEditor" class="control primary-control" type="button" aria-label="Edit hymn content"><span aria-hidden="true">✎</span><span class="control-text">Edit</span></button>
+    </div>
+  </div>
+</main>
+<dialog id="scanDialog" class="dialog" aria-label="Original hymnbook scan">
+  <div class="dialog-head"><h2>Original scan · Hymn 11</h2><button id="closeScan" class="close" type="button" aria-label="Close original scan">✕</button></div>
+  <div class="dialog-body"><img id="scanImage" src="original-hymn-11.jpg" alt="Original scanned page 12 showing hymn 11 with tonic sol-fa and verses"></div>
+</dialog>
+<dialog id="editorDialog" class="dialog editor-dialog" aria-label="Edit hymn content">
+  <form id="editorForm" method="dialog">
+    <div class="dialog-head"><div><h2>Edit hymn content</h2><p class="dialog-hint">Changes are stored on this device until you export the project JSON.</p></div><button id="closeEditor" class="close" type="button" aria-label="Close editor">✕</button></div>
+    <div id="editorBody" class="editor-body"></div>
+    <div class="editor-actions"><button id="addEvent" class="editor-secondary" type="button">Add event</button><button id="resetEdits" class="editor-secondary" type="button">Reset saved edits</button><span></span><button id="exportEdits" class="editor-secondary" type="button">Export JSON</button><button class="editor-save" type="submit">Save changes</button></div>
+  </form>
+</dialog>
+<dialog id="importDialog" class="dialog import-dialog" aria-label="Create a new hymn draft">
+  <form id="importForm">
+    <div class="dialog-head"><div><h2>New hymn from scan</h2><p class="dialog-hint">Creates a proofread-required draft. Review every note and lyric against the scan.</p></div><button id="closeImporter" class="close" type="button" aria-label="Close new hymn importer">✕</button></div>
+    <div class="import-body">
+      <label class="upload-drop"><span>Original scanned page</span><input id="importScan" name="scan" type="file" accept="image/jpeg,image/png,image/webp" required><small id="scanFileStatus">Choose a high-resolution JPG, PNG, or WebP.</small></label>
+      <div class="editor-fields import-fields">
+        <label class="editor-field">Hymn number<input name="number" type="number" min="1" required placeholder="12"></label>
+        <label class="editor-field">Category<input name="category" required placeholder="Thangthatnak"></label>
+        <label class="editor-field">Chin title<input name="title" required placeholder="Title as printed"></label>
+        <label class="editor-field">English title<input name="englishTitle" placeholder="Optional translation"></label>
+        <label class="editor-field">Book page<input name="page" type="number" min="1" placeholder="13"></label>
+        <label class="editor-field">Source / tune<input name="source" placeholder="Optional"></label>
+      </div>
+      <p class="import-warning"><strong>What this creates:</strong> a structured draft with blank aligned events for verses and chorus, plus review flags. It does not infer or certify any notation from the scan.</p>
+    </div>
+    <div class="editor-actions"><span></span><button id="downloadScan" class="editor-secondary" type="button" disabled>Download scan copy</button><button class="editor-save" type="submit">Create draft</button></div>
+  </form>
+</dialog>
+<script src="hymn11-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

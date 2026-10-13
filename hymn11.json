@@ -1,0 +1,1175 @@
+{
+  "number": "11",
+  "title": "KA THLARAU NGAI TUAH!",
+  "englishTitle": "Hark, Hark! My Soul!",
+  "category": "Thangthatnak",
+  "page": "12",
+  "lyricist": "F. W. Faber",
+  "lyricistDates": "1814–1863",
+  "key": "D",
+  "scripture": "Heb. 1:14",
+  "source": "S.S. 231",
+  "arrangers": "C. C. Converse & Ira D. Sankey",
+  "verses": 4,
+  "chorusLabel": "NOLHNAK",
+  "verse4NotUnderlaid": true,
+  "notationSource": "Manually re-typeset SVG created from the user-supplied scan; needs musical proofreading.",
+  "verseScore": [
+    {
+      "sourceSystem": 1,
+      "events": [
+        {
+          "notes": [
+            "m",
+            "d",
+            "s",
+            "d"
+          ],
+          "lyrics": [
+            "Ka",
+            "Hla",
+            "Lam"
+          ],
+          "bar": true,
+          "verse4": "Ngaih"
+        },
+        {
+          "notes": [
+            ":m",
+            ":d",
+            ":s",
+            ":d"
+          ],
+          "lyrics": [
+            "thla",
+            "aw",
+            "hla"
+          ],
+          "verse4": "chiat"
+        },
+        {
+          "notes": [
+            ".,r",
+            ".,s₁",
+            ".,f",
+            ".,d"
+          ],
+          "lyrics": [
+            "-rau",
+            "nan",
+            "pi"
+          ],
+          "verse4": "nak"
+        },
+        {
+          "notes": [
+            "d",
+            "s₁",
+            "m",
+            "d"
+          ],
+          "lyrics": [
+            "ngai",
+            "theih",
+            "ah"
+          ],
+          "bar": true,
+          "verse4": "caan"
+        },
+        {
+          "notes": [
+            ":—",
+            ":—",
+            ":—",
+            ":—"
+          ],
+          "lyrics": [
+            "",
+            "",
+            ""
+          ],
+          "verse4": ""
+        },
+        {
+          "notes": [
+            ".r",
+            ".t₁",
+            ".s",
+            ".s₁"
+          ],
+          "lyrics": [
+            "tuah,",
+            "tik-",
+            "zan-"
+          ],
+          "verse4": "kha"
+        },
+        {
+          "notes": [
+            "m",
+            "d",
+            "s",
+            "d"
+          ],
+          "lyrics": [
+            "vancung",
+            "ah",
+            "lei"
+          ],
+          "bar": true,
+          "verse4": "a"
+        },
+        {
+          "notes": [
+            ".s",
+            ".m",
+            ".d'",
+            ".d"
+          ],
+          "lyrics": [
+            "",
+            "hmai-",
+            "dar-"
+          ],
+          "verse4": "tu"
+        },
+        {
+          "notes": [
+            ":l",
+            ":f",
+            ":d'",
+            ":d"
+          ],
+          "lyrics": [
+            "-mi",
+            "lei",
+            "khing"
+          ],
+          "verse4": "sau"
+        },
+        {
+          "notes": [
+            ".d'",
+            ".f",
+            ".l",
+            ".d"
+          ],
+          "lyrics": [
+            "hla-",
+            "ah",
+            "thawng"
+          ],
+          "verse4": "hmah-"
+        },
+        {
+          "notes": [
+            "s",
+            "m",
+            "d'",
+            "d"
+          ],
+          "lyrics": [
+            "sak-nak,",
+            "kal",
+            "bangin,"
+          ],
+          "bar": true,
+          "verse4": "seh-"
+        },
+        {
+          "notes": [
+            ":m",
+            ":d",
+            ":s",
+            ":d"
+          ],
+          "lyrics": [
+            "",
+            "u,",
+            ""
+          ],
+          "verse4": "law"
+        },
+        {
+          "notes": [
+            "m",
+            "d",
+            "s",
+            "d"
+          ],
+          "lyrics": [
+            "Vaw",
+            "“Re",
+            "Vaw-"
+          ],
+          "bar": true,
+          "verse4": "Khua"
+        }
+      ]
+    },
+    {
+      "sourceSystem": 2,
+      "events": [
+        {
+          "notes": [
+            ":m",
+            ":d",
+            ":s",
+            ":d"
+          ],
+          "lyrics": [
+            "lei",
+            "thei",
+            "lei"
+          ],
+          "bar": true,
+          "verse4": "mui"
+        },
+        {
+          "notes": [
+            ".,r",
+            ".,s₁",
+            ".,f",
+            ".,d"
+          ],
+          "lyrics": [
+            "lawmhnak",
+            "-mi",
+            "cungah"
+          ],
+          "verse4": "hlawt"
+        },
+        {
+          "notes": [
+            "d",
+            "s₁",
+            "m",
+            "d"
+          ],
+          "lyrics": [
+            "",
+            "le",
+            ""
+          ],
+          "bar": true,
+          "verse4": "in"
+        },
+        {
+          "notes": [
+            ":—",
+            ":—",
+            ":—",
+            ":—"
+          ],
+          "lyrics": [
+            "",
+            "",
+            ""
+          ],
+          "verse4": ""
+        },
+        {
+          "notes": [
+            ".r",
+            ".t₁",
+            ".s",
+            ".s₁"
+          ],
+          "lyrics": [
+            "ri-",
+            "si-",
+            "Je-"
+          ],
+          "verse4": "lawmhnak"
+        },
+        {
+          "notes": [
+            "m",
+            "d",
+            "s",
+            "d"
+          ],
+          "lyrics": [
+            "li",
+            "fak",
+            "suh"
+          ],
+          "bar": true,
+          "verse4": ""
+        },
+        {
+          "notes": [
+            ".l",
+            ".d",
+            ".f",
+            ".d"
+          ],
+          "lyrics": [
+            "cung",
+            "ra",
+            "thawng"
+          ],
+          "verse4": "khua"
+        },
+        {
+          "notes": [
+            ":s",
+            ":d",
+            ":m",
+            ":d"
+          ],
+          "lyrics": [
+            "tiang",
+            "u,”",
+            "a"
+          ],
+          "verse4": "a"
+        },
+        {
+          "notes": [
+            ".m",
+            ".d",
+            ".s",
+            ".d"
+          ],
+          "lyrics": [
+            "a",
+            "a",
+            "thang"
+          ],
+          "verse4": "ceu"
+        },
+        {
+          "notes": [
+            "r",
+            "t₁",
+            "s",
+            "s₁"
+          ],
+          "lyrics": [
+            "thang,",
+            "ti,",
+            "cang,"
+          ],
+          "bar": true,
+          "verse4": "lai"
+        },
+        {
+          "notes": [
+            ":—",
+            ":—",
+            ":—",
+            ":—"
+          ],
+          "lyrics": [
+            "",
+            "",
+            ""
+          ],
+          "verse4": ""
+        },
+        {
+          "notes": [
+            "m",
+            "d",
+            "s",
+            "d"
+          ],
+          "lyrics": [
+            "Hla-",
+            "Khuamui",
+            "Thong"
+          ],
+          "bar": true,
+          "verse4": "Rethei"
+        },
+        {
+          "notes": [
+            ":m",
+            ":d",
+            ":s",
+            ":d"
+          ],
+          "lyrics": [
+            "sak-",
+            "",
+            "tam-pi"
+          ],
+          "verse4": ""
+        },
+        {
+          "notes": [
+            ".,r",
+            ".,s₁",
+            ".,f",
+            ".,d"
+          ],
+          "lyrics": [
+            "nak",
+            "chung",
+            ""
+          ],
+          "verse4": "mi"
+        }
+      ]
+    },
+    {
+      "sourceSystem": 3,
+      "events": [
+        {
+          "notes": [
+            "d",
+            "s₁",
+            "m",
+            "d"
+          ],
+          "lyrics": [
+            "thawng",
+            "ah",
+            "thil-"
+          ],
+          "bar": true,
+          "verse4": "kal"
+        },
+        {
+          "notes": [
+            ":—",
+            ":—",
+            ":—",
+            ":—"
+          ],
+          "lyrics": [
+            "",
+            "",
+            ""
+          ],
+          "verse4": ""
+        },
+        {
+          "notes": [
+            ".r",
+            ".t₁",
+            ".s",
+            ".s₁"
+          ],
+          "lyrics": [
+            "tha",
+            "Bawi",
+            "rit"
+          ],
+          "verse4": "nak"
+        },
+        {
+          "notes": [
+            "m",
+            "d",
+            "s",
+            "d"
+          ],
+          "lyrics": [
+            "kha",
+            "Je-",
+            "a"
+          ],
+          "bar": true,
+          "verse4": ""
+        },
+        {
+          "notes": [
+            ".s",
+            ".m",
+            ".d'",
+            ".d"
+          ],
+          "lyrics": [
+            "kan",
+            "suh",
+            "phor-"
+          ],
+          "verse4": "lam"
+        },
+        {
+          "notes": [
+            ":l",
+            ":f",
+            ":d'",
+            ":d"
+          ],
+          "lyrics": [
+            "theih",
+            "nih",
+            "mi"
+          ],
+          "verse4": "kha"
+        },
+        {
+          "notes": [
+            ".d'",
+            ".f",
+            ".l",
+            ".d"
+          ],
+          "lyrics": [
+            "tik-",
+            "an",
+            "vial-"
+          ],
+          "verse4": "a"
+        },
+        {
+          "notes": [
+            "s",
+            "m",
+            "d'",
+            "d"
+          ],
+          "lyrics": [
+            "ah",
+            "auh",
+            "te"
+          ],
+          "bar": true,
+          "verse4": "dih"
+        },
+        {
+          "notes": [
+            ":m",
+            ":d",
+            ":s",
+            ":d"
+          ],
+          "lyrics": [
+            "cun,",
+            "cang,",
+            "nih,"
+          ],
+          "verse4": "tikah,"
+        },
+        {
+          "notes": [
+            "s",
+            "m",
+            "d'",
+            "d"
+          ],
+          "lyrics": [
+            "Lungthlen-",
+            "Van-",
+            "Tuu-"
+          ],
+          "bar": true,
+          "verse4": "Thlarau"
+        },
+        {
+          "notes": [
+            ":l",
+            ":f",
+            ":d'",
+            ":d"
+          ],
+          "lyrics": [
+            "",
+            "cung",
+            "khal"
+          ],
+          "verse4": ""
+        },
+        {
+          "notes": [
+            ".s",
+            ".m",
+            ".d'",
+            ".d"
+          ],
+          "lyrics": [
+            "nak",
+            "lam",
+            "Bawi-"
+          ],
+          "verse4": "hna"
+        }
+      ]
+    },
+    {
+      "sourceSystem": 4,
+      "events": [
+        {
+          "notes": [
+            "s",
+            "m",
+            "d'",
+            "d"
+          ],
+          "lyrics": [
+            "le",
+            "tha",
+            "pa"
+          ],
+          "bar": true,
+          "verse4": "ngamnak"
+        },
+        {
+          "notes": [
+            ".m",
+            ".d",
+            ".s",
+            ".d"
+          ],
+          "lyrics": [
+            "sual",
+            "hmuhsak",
+            "nangmah"
+          ],
+          "verse4": ""
+        },
+        {
+          "notes": [
+            ":d",
+            ":d",
+            ":s",
+            ":m"
+          ],
+          "lyrics": [
+            "thlahnak",
+            "",
+            ""
+          ],
+          "verse4": "suikhua"
+        },
+        {
+          "notes": [
+            ".r",
+            ".d",
+            ".l",
+            ".f"
+          ],
+          "lyrics": [
+            "",
+            "-tu",
+            "sin-"
+          ],
+          "verse4": ""
+        },
+        {
+          "notes": [
+            "m",
+            "d",
+            "s",
+            "s"
+          ],
+          "lyrics": [
+            "bia",
+            "kha",
+            "ah"
+          ],
+          "bar": true,
+          "verse4": "kan"
+        },
+        {
+          "notes": [
+            ":r",
+            ":t₁",
+            ":f",
+            ":s₁"
+          ],
+          "lyrics": [
+            "a",
+            "a",
+            "kan"
+          ],
+          "verse4": "phak"
+        },
+        {
+          "notes": [
+            "d",
+            "s₁",
+            "m",
+            "d"
+          ],
+          "lyrics": [
+            "chim.",
+            "si.",
+            "ra."
+          ],
+          "bar": true,
+          "verse4": "lai"
+        },
+        {
+          "notes": [
+            ":—",
+            ":—",
+            ":—",
+            ":—"
+          ],
+          "lyrics": [
+            "",
+            "",
+            ""
+          ],
+          "verse4": ""
+        }
+      ]
+    }
+  ],
+  "chorusScore": [
+    {
+      "sourceSystem": 4,
+      "events": [
+        {
+          "notes": [
+            "s",
+            "d",
+            "d'",
+            "m"
+          ],
+          "chorusLyric": "Bia",
+          "bar": true
+        },
+        {
+          "notes": [
+            ":l",
+            ":f",
+            ":d'",
+            ":f"
+          ],
+          "chorusLyric": "kam"
+        },
+        {
+          "notes": [
+            ".t",
+            ".f",
+            ".s",
+            ".r"
+          ],
+          "chorusLyric": "a"
+        },
+        {
+          "notes": [
+            "d'",
+            "m",
+            "s",
+            "d"
+          ],
+          "chorusLyric": "tling,",
+          "bar": true
+        },
+        {
+          "notes": [
+            ":—",
+            ":—",
+            ":—",
+            ":—"
+          ],
+          "chorusLyric": ""
+        },
+        {
+          "notes": [
+            ".s",
+            ".m",
+            ".d'",
+            ".d"
+          ],
+          "chorusLyric": "Van-"
+        }
+      ]
+    },
+    {
+      "sourceSystem": 5,
+      "events": [
+        {
+          "notes": [
+            "l",
+            "f",
+            "d'",
+            "f"
+          ],
+          "chorusLyric": "cung",
+          "bar": true
+        },
+        {
+          "notes": [
+            ".s",
+            ".s",
+            ".d'",
+            ".m"
+          ],
+          "chorusLyric": "mi"
+        },
+        {
+          "notes": [
+            ":l",
+            ":f",
+            ":d'",
+            ":f"
+          ],
+          "chorusLyric": "vialte"
+        },
+        {
+          "notes": [
+            ".t",
+            ".f",
+            ".s",
+            ".r"
+          ],
+          "chorusLyric": ""
+        },
+        {
+          "notes": [
+            "d'",
+            "m",
+            "s",
+            "d"
+          ],
+          "chorusLyric": "nih",
+          "bar": true
+        },
+        {
+          "notes": [
+            ":s",
+            ":m",
+            ":d'",
+            ":d"
+          ],
+          "chorusLyric": "khan,"
+        },
+        {
+          "notes": [
+            "d'",
+            "m",
+            "s",
+            "d"
+          ],
+          "chorusLyric": "An",
+          "bar": true
+        },
+        {
+          "notes": [
+            ":d'",
+            ":m",
+            ":s",
+            ":d"
+          ],
+          "chorusLyric": "aw"
+        },
+        {
+          "notes": [
+            ".t",
+            ".r",
+            ".s",
+            ".r"
+          ],
+          "chorusLyric": "ngaih"
+        },
+        {
+          "notes": [
+            "d'",
+            "m",
+            "s",
+            "m"
+          ],
+          "chorusLyric": "awk",
+          "bar": true
+        },
+        {
+          "notes": [
+            ".s",
+            ".d",
+            ".s",
+            ".m"
+          ],
+          "chorusLyric": "tlak"
+        },
+        {
+          "notes": [
+            ":f",
+            ":t₁",
+            ":s",
+            ":r"
+          ],
+          "chorusLyric": "in"
+        },
+        {
+          "notes": [
+            ".m",
+            ".d",
+            ".s",
+            ".d"
+          ],
+          "chorusLyric": "hla"
+        }
+      ]
+    },
+    {
+      "sourceSystem": 6,
+      "events": [
+        {
+          "notes": [
+            "l",
+            "d",
+            "f",
+            "f₁"
+          ],
+          "chorusLyric": "an",
+          "bar": true
+        },
+        {
+          "notes": [
+            ":r",
+            ":d",
+            ":l",
+            ":fe₁"
+          ],
+          "chorusLyric": "sa"
+        },
+        {
+          "notes": [
+            "r",
+            "t₁",
+            "s",
+            "s₁"
+          ],
+          "chorusLyric": "i,",
+          "bar": true
+        },
+        {
+          "notes": [
+            ":—",
+            ":—",
+            ":—",
+            ":—"
+          ],
+          "chorusLyric": ""
+        },
+        {
+          "notes": [
+            "m",
+            "d",
+            "s",
+            "d"
+          ],
+          "chorusLyric": "Zan-",
+          "bar": true
+        },
+        {
+          "notes": [
+            ":m",
+            ":d",
+            ":s",
+            ":d"
+          ],
+          "chorusLyric": "lei"
+        },
+        {
+          "notes": [
+            ".r",
+            ".t₁",
+            ".f",
+            ".s₁"
+          ],
+          "chorusLyric": "tah-"
+        },
+        {
+          "notes": [
+            "d",
+            "s₁",
+            "m",
+            "d"
+          ],
+          "chorusLyric": "nak",
+          "bar": true
+        },
+        {
+          "notes": [
+            ":—",
+            ":—",
+            ":—",
+            ":—"
+          ],
+          "chorusLyric": ""
+        },
+        {
+          "notes": [
+            ".r",
+            ".t₁",
+            ".s",
+            ".s₁"
+          ],
+          "chorusLyric": "zing-"
+        },
+        {
+          "notes": [
+            "m",
+            "d",
+            "s",
+            "d"
+          ],
+          "chorusLyric": "lei",
+          "bar": true
+        },
+        {
+          "notes": [
+            ".s",
+            ".m",
+            ".d'",
+            ".d"
+          ],
+          "chorusLyric": "lung-"
+        },
+        {
+          "notes": [
+            ":l",
+            ":f",
+            ":d'",
+            ":d"
+          ],
+          "chorusLyric": "lawmh-"
+        },
+        {
+          "notes": [
+            ".d'",
+            ".f",
+            ".l",
+            ".d"
+          ],
+          "chorusLyric": "nak"
+        }
+      ]
+    },
+    {
+      "sourceSystem": 7,
+      "events": [
+        {
+          "notes": [
+            "s",
+            "m",
+            "d'",
+            "d"
+          ],
+          "chorusLyric": "tha",
+          "bar": true
+        },
+        {
+          "notes": [
+            ":m",
+            ":d",
+            ":s",
+            ":d"
+          ],
+          "chorusLyric": "bik,"
+        },
+        {
+          "notes": [
+            "s",
+            "m",
+            "d'",
+            "d"
+          ],
+          "chorusLyric": "Khua",
+          "bar": true
+        },
+        {
+          "notes": [
+            ":l",
+            ":f",
+            ":d'",
+            ":d"
+          ],
+          "chorusLyric": "muih-nak"
+        },
+        {
+          "notes": [
+            ".s",
+            ".m",
+            ".d'",
+            ".d"
+          ],
+          "chorusLyric": ""
+        },
+        {
+          "notes": [
+            "m",
+            "d",
+            "s",
+            "d"
+          ],
+          "chorusLyric": "kha",
+          "bar": true
+        },
+        {
+          "notes": [
+            ".s",
+            ".m",
+            ".d'",
+            ".d"
+          ],
+          "chorusLyric": "dawtnak"
+        },
+        {
+          "notes": [
+            ":l",
+            ":f",
+            ":d'",
+            ":f"
+          ],
+          "chorusLyric": ""
+        },
+        {
+          "notes": [
+            ".d'",
+            ".f",
+            ".l",
+            ".f"
+          ],
+          "chorusLyric": "nih"
+        },
+        {
+          "notes": [
+            "d'",
+            "m",
+            "s",
+            "s"
+          ],
+          "chorusLyric": "a"
+        },
+        {
+          "notes": [
+            ":t",
+            ":r            .f",
+            ":s",
+            ":s₁"
+          ],
+          "chorusLyric": "ceu-",
+          "bar": true
+        },
+        {
+          "notes": [
+            "d'",
+            "m",
+            "s",
+            "d"
+          ],
+          "chorusLyric": "ter"
+        },
+        {
+          "notes": [
+            ":—",
+            ":—",
+            ":—",
+            ":—"
+          ],
+          "chorusLyric": "",
+          "bar": true
+        },
+        {
+          "notes": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "chorusLyric": ""
+        }
+      ]
+    }
+  ]
+}
