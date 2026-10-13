@@ -59,9 +59,12 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(21px,5.3vw,30px);
 .note{font-size:var(--note-size);white-space:nowrap;line-height:1.12;min-width:0}
 .lyric{font-size:var(--lyric-size);font-weight:700;line-height:1.1;white-space:nowrap;min-width:0}
 .event.bar-before::before,.event.bar-before::after{content:"";position:absolute;left:0;border-left:1.6px solid #22314a;pointer-events:none}
-.music-line.filtered .event.bar-before::before,.music-line.filtered .event.bar-before::after{display:none}
 .event.bar-before::before{top:2px;height:calc(var(--voice-height) * 2 - 4px)}
 .event.bar-before::after{top:calc(var(--voice-height) * 2 + var(--lyric-height) + 2px);height:calc(var(--voice-height) * 2 - 4px)}
+.event.bar-double::before,.event.bar-double::after{display:none}
+.voice-divider{position:absolute;left:0;border-left:1.6px solid #22314a;pointer-events:none}.voice-divider-s{top:2px;height:calc(var(--voice-height) - 4px)}.voice-divider-a{top:calc(var(--voice-height) + 2px);height:calc(var(--voice-height) - 4px)}.voice-divider-t{top:calc(var(--voice-height) * 2 + var(--lyric-height) + 2px);height:calc(var(--voice-height) - 4px)}.voice-divider-b{top:calc(var(--voice-height) * 3 + var(--lyric-height) + 2px);height:calc(var(--voice-height) - 4px)}
+.music-line.filtered .event.bar-before::before,.music-line.filtered .event.bar-before::after{display:none}
+.music-line.filtered .voice-divider{display:none}
 .note.blank,.lyric.blank{opacity:0}
 .music-line.last-of-original{border-color:#d6e7fa}
 .footer-tools{position:sticky;z-index:6;bottom:0;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--paper) 96%,transparent);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:13px 13px 0 0;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:25px;box-shadow:0 -6px 22px #142b4b0b}
@@ -89,11 +92,11 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(21px,5.3vw,30px);
 .editor-details{margin:0 0 18px}.editor-details summary{cursor:pointer;font-size:14px;font-weight:800;color:#40628e;margin-bottom:10px}.editor-details[open] summary{margin-bottom:10px}
 .editor-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.editor-field{display:grid;gap:4px;font-size:11px;font-weight:750;color:var(--subtle)}
 .editor-field input,.event-editor input{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:7px;min-width:0}
-.event-editor{display:grid;grid-template-columns:36px repeat(5,minmax(64px,1fr));gap:5px;align-items:center;margin:0 0 5px}.event-editor label{font:700 11px Georgia,serif;color:var(--subtle);text-align:center}.event-editor .event-number{font:700 11px Arial,sans-serif;text-align:right;color:var(--subtle)}
-.editor-columns{display:grid;grid-template-columns:36px repeat(5,minmax(64px,1fr));gap:5px;margin:0 0 5px}.editor-columns span{font-size:10px;font-weight:800;color:var(--subtle);text-align:center}.editor-actions{position:sticky;bottom:0;display:grid;grid-template-columns:auto auto 1fr auto auto;gap:7px;align-items:center;padding:10px 14px;background:var(--paper);border-top:1px solid var(--line)}
-.editor-reference{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start;margin:0}.editor-reference figure,.editor-reference section{margin:0;border:1px solid var(--line);border-radius:10px;background:var(--soft);overflow:hidden}.editor-reference figcaption,.editor-reference h3{margin:0;padding:9px 11px;border-bottom:1px solid var(--line);font-size:12px;font-weight:800;color:var(--ink)}.scan-zoom{float:right;display:flex;align-items:center;gap:5px}.scan-zoom button{width:23px;height:23px;padding:0;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:#135aa9;font-weight:800}.scan-zoom span{min-width:35px;text-align:center;font-size:10px;color:var(--subtle)}.editor-scan-viewport{height:500px;overflow:auto;background:#fff}.editor-scan-viewport img{display:block;max-width:none;height:auto;min-width:100%;object-fit:initial;object-position:top left}.editor-edit-panel{height:536px;display:flex;flex-direction:column}.editor-edit-panel p{font-size:11px;line-height:1.4;color:var(--subtle);margin:8px 11px}.editor-table{overflow:auto;padding:0 10px 10px}.editor-table .event-editor,.editor-table .editor-columns{min-width:510px}
+.event-editor{display:grid;grid-template-columns:36px repeat(5,minmax(64px,1fr)) 100px;gap:5px;align-items:center;margin:0 0 5px}.event-editor label{font:700 11px Georgia,serif;color:var(--subtle);text-align:center}.event-editor .event-number{font:700 11px Arial,sans-serif;text-align:right;color:var(--subtle)}.event-structure{display:flex;align-items:center;justify-content:center;gap:3px}.event-structure select{width:48px;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:var(--ink);font-size:9px;padding:4px 1px}.event-structure button{width:20px;height:24px;padding:0;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:#135aa9;font-weight:800}
+.editor-columns{display:grid;grid-template-columns:36px repeat(5,minmax(64px,1fr)) 100px;gap:5px;margin:0 0 5px}.editor-columns span{font-size:10px;font-weight:800;color:var(--subtle);text-align:center}.editor-actions{position:sticky;bottom:0;display:grid;grid-template-columns:auto auto 1fr auto auto;gap:7px;align-items:center;padding:10px 14px;background:var(--paper);border-top:1px solid var(--line)}
+.editor-reference{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start;margin:0}.editor-reference figure,.editor-reference section{margin:0;border:1px solid var(--line);border-radius:10px;background:var(--soft);overflow:hidden}.editor-reference figcaption,.editor-reference h3{margin:0;padding:9px 11px;border-bottom:1px solid var(--line);font-size:12px;font-weight:800;color:var(--ink)}.scan-zoom{float:right;display:flex;align-items:center;gap:5px}.scan-zoom button{width:23px;height:23px;padding:0;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:#135aa9;font-weight:800}.scan-zoom span{min-width:35px;text-align:center;font-size:10px;color:var(--subtle)}.editor-scan-viewport{height:500px;overflow:auto;background:#fff}.editor-scan-viewport img{display:block;max-width:none;height:auto;min-width:100%;object-fit:initial;object-position:top left}.editor-edit-panel{height:536px;display:flex;flex-direction:column}.editor-edit-panel p{font-size:11px;line-height:1.4;color:var(--subtle);margin:8px 11px}.editor-table{overflow:auto;padding:0 10px 10px}.editor-table .event-editor,.editor-table .editor-columns{min-width:620px}
 .editor-secondary,.editor-save{border-radius:8px;padding:9px 11px;font-size:12px;font-weight:800}.editor-secondary{background:var(--soft);color:#135aa9;border:1px solid var(--line)}.editor-save{background:var(--blue);color:#fff;border:1px solid var(--blue)}
-@media(max-width:700px){.editor-fields,.import-fields{grid-template-columns:1fr}.editor-body{padding:11px}.editor-reference{grid-template-columns:1fr}.editor-scan-viewport{height:300px}.editor-edit-panel{height:420px}.event-editor,.editor-columns{grid-template-columns:27px repeat(5,minmax(56px,1fr));gap:3px;min-width:330px}.editor-section{overflow-x:auto}.event-editor input{padding:6px 4px;font-size:12px}.editor-actions{padding:9px;gap:5px}.editor-secondary,.editor-save{padding:9px 7px;font-size:11px}}
+@media(max-width:700px){.editor-fields,.import-fields{grid-template-columns:1fr}.editor-body{padding:11px}.editor-reference{grid-template-columns:1fr}.editor-scan-viewport{height:300px}.editor-edit-panel{height:420px}.event-editor,.editor-columns{grid-template-columns:27px repeat(5,minmax(56px,1fr)) 100px;gap:3px;min-width:430px}.editor-section{overflow-x:auto}.event-editor input{padding:6px 4px;font-size:12px}.editor-actions{padding:9px;gap:5px}.editor-secondary,.editor-save{padding:9px 7px;font-size:11px}}
 @media(max-width:600px){.metadata{grid-template-columns:1fr 1fr;gap:3px 10px}.meta.wide{grid-column:1/-1;text-align:left}.score-head{align-items:flex-start}.score-options{flex-direction:column;align-items:flex-end;gap:4px}.section-caption{font-size:10px}}
 .sr-only{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
 :root[data-theme="dark"]{color-scheme:dark;--page:#111824;--paper:#202a39;--ink:#edf4fe;--subtle:#aebbd0;--line:#39475a;--soft:#2a3a4e;--blue:#64a5ff;--blue-soft:#223d63}
@@ -101,7 +104,8 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(21px,5.3vw,30px);
 :root[data-theme="dark"] .primary-control{background:#3579d6;border-color:#3579d6}
 :root[data-theme="dark"] .import-warning{color:#f2d9a0;background:#423823;border-color:#786130}
 :root[data-theme="dark"] .notice{color:#f2d9a0;background:#423823;border-color:#786130}
-:root[data-theme="dark"] .event.bar-before::before,:root[data-theme="dark"] .event.bar-before::after{border-color:#cfdbeb}
+:root[data-theme="dark"] .event.bar-before::before,:root[data-theme="dark"] .event.bar-before::after{border-color:#cfdbeb}:root[data-theme="dark"] .event.bar-double::before,:root[data-theme="dark"] .event.bar-double::after{border-left-color:#cfdbeb}
+:root[data-theme="dark"] .voice-divider{border-color:#cfdbeb}
 :root[data-theme="dark"] .voice-labels{color:#d5e8fc}
 :root[data-theme="dark"] .draft-tag{background:var(--paper);border-color:var(--line);color:var(--subtle)}
 :root[data-theme="dark"] .footer-tools{background:#202a39f5}
@@ -1490,7 +1494,7 @@ window.HYMN11 = {
     // If one unusual lyric word exceeds available width, reduce its column without overflowing.
     const factor=width>cap && events.length===1? Math.min(1,cap/width):1;
     for (const e of events){
-      const cell=document.createElement('div');cell.className='event'+(e.bar?' bar-before':'');
+      const cell=document.createElement('div');cell.className='event'+(e.bar?' bar-before':'')+(e.barStyle==='double'?' bar-double':'');
       cell.style.width=(preferredWidth(e)*factor)+'px';
       for (const row of rows) {
         const slot=row[1]==='lyric'?lyricFor(e):e.notes[row[2]];
@@ -1499,6 +1503,9 @@ window.HYMN11 = {
         el.textContent=slot||'·';
         if(row[1]==='lyric' && slot)el.title=slot;
         cell.appendChild(el);
+      }
+      if(e.barStyle==='double'){
+        ['s','a','t','b'].forEach(voice=>{const divider=document.createElement('span');divider.className=`voice-divider voice-divider-${voice}`;divider.setAttribute('aria-hidden','true');cell.appendChild(divider);});
       }
       group.appendChild(cell);
     }
@@ -1553,25 +1560,37 @@ window.HYMN11 = {
     const eventRows=score.flatMap(system=>system.events).map((event,index)=>{
       const lyric=lyricFor(event); const prefix=`event-${index}`;
       const note=(voice,label)=>`<input aria-label="Event ${index+1} ${label}" name="${prefix}-note-${voice}" value="${escapeHtml(event.notes[voice])}">`;
-      return `<div class="event-editor"><span class="event-number">${index+1}</span>${note(0,'S')}${note(1,'A')}<input aria-label="Event ${index+1} ${lyricLabel}" name="${prefix}-lyric" value="${escapeHtml(lyric)}">${note(2,'T')}${note(3,'B')}</div>`;
+      const barStyle=event.barStyle==='double'?'double':event.bar?'single':'none';
+      return `<div class="event-editor"><span class="event-number">${index+1}</span>${note(0,'S')}${note(1,'A')}<input aria-label="Event ${index+1} ${lyricLabel}" name="${prefix}-lyric" value="${escapeHtml(lyric)}">${note(2,'T')}${note(3,'B')}<span class="event-structure"><select name="${prefix}-bar-style" aria-label="Divider before event ${index+1}"><option value="none" ${barStyle==='none'?'selected':''}>None</option><option value="single" ${barStyle==='single'?'selected':''}>Shared</option><option value="double" ${barStyle==='double'?'selected':''}>Separate</option></select><button type="button" data-move-event="${index}" data-direction="-1" aria-label="Move event ${index+1} left">←</button><button type="button" data-move-event="${index}" data-direction="1" aria-label="Move event ${index+1} right">→</button></span></div>`;
     }).join('');
     const label=section==='chorus'?escapeHtml(data.chorusLabel):'Verse '+section;
-    return `<details class="editor-details"><summary>Hymn details</summary><div class="editor-fields">${input('Hymn number','number',data.number)}${input('Category','category',data.category)}${input('Title','title',data.title)}${input('English title','englishTitle',data.englishTitle)}${input('Lyricist','lyricist',data.lyricist)}${input('Lyricist dates','lyricistDates',data.lyricistDates)}${input('Key / Doh','key',data.key)}${input('Scripture','scripture',data.scripture)}${input('Source','source',data.source)}${input('Book page','page',data.page)}${input('Arrangement','arrangers',data.arrangers)}${input('Chorus label','chorusLabel',data.chorusLabel)}</div></details><section class="editor-reference" aria-label="Proofreading workspace"><figure><figcaption>Original scan <span class="scan-zoom"><button type="button" data-scan-zoom="-25" aria-label="Zoom out original scan">−</button><span id="scanZoomCaption">${editorScanZoom}%</span><button type="button" data-scan-zoom="25" aria-label="Zoom in original scan">+</button></span></figcaption><div class="editor-scan-viewport"><img id="editorScan" style="width:${editorScanZoom}%" src="${escapeHtml(activeScanSrc)}" alt="Original scan of hymn ${escapeHtml(data.number)}"></div></figure><section class="editor-edit-panel"><h3>${label} edit view</h3><p>Each row stays aligned as S, A, lyric, T, B.</p><div class="editor-table"><div class="editor-columns"><span>#</span><span>S</span><span>A</span><span>Lyric</span><span>T</span><span>B</span></div>${eventRows}</div></section></section>`;
+    return `<details class="editor-details"><summary>Hymn details</summary><div class="editor-fields">${input('Hymn number','number',data.number)}${input('Category','category',data.category)}${input('Title','title',data.title)}${input('English title','englishTitle',data.englishTitle)}${input('Lyricist','lyricist',data.lyricist)}${input('Lyricist dates','lyricistDates',data.lyricistDates)}${input('Key / Doh','key',data.key)}${input('Scripture','scripture',data.scripture)}${input('Source','source',data.source)}${input('Book page','page',data.page)}${input('Arrangement','arrangers',data.arrangers)}${input('Chorus label','chorusLabel',data.chorusLabel)}</div></details><section class="editor-reference" aria-label="Proofreading workspace"><figure><figcaption>Original scan <span class="scan-zoom"><button type="button" data-scan-zoom="-25" aria-label="Zoom out original scan">−</button><span id="scanZoomCaption">${editorScanZoom}%</span><button type="button" data-scan-zoom="25" aria-label="Zoom in original scan">+</button></span></figcaption><div class="editor-scan-viewport"><img id="editorScan" style="width:${editorScanZoom}%" src="${escapeHtml(activeScanSrc)}" alt="Original scan of hymn ${escapeHtml(data.number)}"></div></figure><section class="editor-edit-panel"><h3>${label} edit view</h3><p>Columns stay synchronized. Shared divides S/A and T/B; Separate divides S, A, T, and B individually. Arrows move the complete S/A/lyric/T/B column.</p><div class="editor-table"><div class="editor-columns"><span>#</span><span>S</span><span>A</span><span>Lyric</span><span>T</span><span>B</span><span>Structure</span></div>${eventRows}</div></section></section>`;
   }
   function openEditor() { editorBody.innerHTML=editorMarkup(); editorDialog.showModal(); }
   function savedDataLoad() { try { const saved=localStorage.getItem('chinHymn11-edits'); if(saved) data=JSON.parse(saved); } catch {} }
-  function saveEditor() {
+  function applyEditorForm() {
     const form=new FormData(document.getElementById('editorForm'));
     ['number','category','title','englishTitle','lyricist','lyricistDates','key','scripture','source','page','arrangers','chorusLabel'].forEach(key=>data[key]=String(form.get(key) ?? '').trim());
     const events=currentLines().flatMap(system=>system.events);
     events.forEach((event,index)=>{
       event.notes=event.notes.map((_,voice)=>String(form.get(`event-${index}-note-${voice}`) ?? '').trim());
       const lyric=String(form.get(`event-${index}-lyric`) ?? '').trim();
+      const barStyle=String(form.get(`event-${index}-bar-style`) ?? 'none');
+      if(barStyle==='none'){delete event.bar;delete event.barStyle;}else{event.bar=true;if(barStyle==='double')event.barStyle='double';else delete event.barStyle;}
       if(section==='chorus') event.chorusLyric=lyric;
       else if(section==='4') event.verse4=lyric;
       else { event.lyrics ??=['','','']; event.lyrics[Number(section)-1]=lyric; }
     });
-    settingsSave(dataStorageKey,JSON.stringify(data)); render(); editorDialog.close();
+  }
+  function saveEditor() {
+    applyEditorForm();settingsSave(dataStorageKey,JSON.stringify(data)); render(); editorDialog.close();
+  }
+  function moveEvent(index,direction) {
+    applyEditorForm();const events=currentLines().flatMap(system=>system.events);const target=index+direction;
+    if(target<0||target>=events.length)return;
+    [events[index],events[target]]=[events[target],events[index]];
+    let offset=0;for(const system of currentLines()){const count=system.events.length;system.events=events.slice(offset,offset+count);offset+=count;}
+    editorBody.innerHTML=editorMarkup();
   }
   function exportData() {
     const blob=new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'}); const url=URL.createObjectURL(blob);
@@ -1627,6 +1646,7 @@ window.HYMN11 = {
   document.getElementById('exportEdits').addEventListener('click',exportData);
   document.getElementById('resetEdits').addEventListener('click',()=>{if(window.confirm('Remove all locally saved hymn edits from this device?')){try{localStorage.removeItem(dataStorageKey)}catch{}data=clone(originalData);dataStorageKey='chinHymn11-edits';render();editorBody.innerHTML=editorMarkup();}});
   editorBody.addEventListener('click',ev=>{const button=ev.target.closest('[data-scan-zoom]');if(!button)return;editorScanZoom=Math.max(50,Math.min(250,editorScanZoom+Number(button.dataset.scanZoom)));const image=document.getElementById('editorScan');const caption=document.getElementById('scanZoomCaption');if(image)image.style.width=editorScanZoom+'%';if(caption)caption.textContent=editorScanZoom+'%';});
+  editorBody.addEventListener('click',ev=>{const button=ev.target.closest('[data-move-event]');if(button)moveEvent(Number(button.dataset.moveEvent),Number(button.dataset.direction));});
   editorDialog.addEventListener('click',ev=>{if(ev.target===editorDialog)editorDialog.close()});
   document.getElementById('openImporter').addEventListener('click',()=>importDialog.showModal());
   document.getElementById('closeImporter').addEventListener('click',()=>importDialog.close());

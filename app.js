@@ -120,7 +120,7 @@
     // If one unusual lyric word exceeds available width, reduce its column without overflowing.
     const factor=width>cap && events.length===1? Math.min(1,cap/width):1;
     for (const e of events){
-      const cell=document.createElement('div');cell.className='event'+(e.bar?' bar-before':'');
+      const cell=document.createElement('div');cell.className='event'+(e.bar?' bar-before':'')+(e.barStyle==='double'?' bar-double':'');
       cell.style.width=(preferredWidth(e)*factor)+'px';
       for (const row of rows) {
         const slot=row[1]==='lyric'?lyricFor(e):e.notes[row[2]];
@@ -129,6 +129,9 @@
         el.textContent=slot||'·';
         if(row[1]==='lyric' && slot)el.title=slot;
         cell.appendChild(el);
+      }
+      if(e.barStyle==='double'){
+        ['s','a','t','b'].forEach(voice=>{const divider=document.createElement('span');divider.className=`voice-divider voice-divider-${voice}`;divider.setAttribute('aria-hidden','true');cell.appendChild(divider);});
       }
       group.appendChild(cell);
     }
@@ -183,25 +186,37 @@
     const eventRows=score.flatMap(system=>system.events).map((event,index)=>{
       const lyric=lyricFor(event); const prefix=`event-${index}`;
       const note=(voice,label)=>`<input aria-label="Event ${index+1} ${label}" name="${prefix}-note-${voice}" value="${escapeHtml(event.notes[voice])}">`;
-      return `<div class="event-editor"><span class="event-number">${index+1}</span>${note(0,'S')}${note(1,'A')}<input aria-label="Event ${index+1} ${lyricLabel}" name="${prefix}-lyric" value="${escapeHtml(lyric)}">${note(2,'T')}${note(3,'B')}</div>`;
+      const barStyle=event.barStyle==='double'?'double':event.bar?'single':'none';
+      return `<div class="event-editor"><span class="event-number">${index+1}</span>${note(0,'S')}${note(1,'A')}<input aria-label="Event ${index+1} ${lyricLabel}" name="${prefix}-lyric" value="${escapeHtml(lyric)}">${note(2,'T')}${note(3,'B')}<span class="event-structure"><select name="${prefix}-bar-style" aria-label="Divider before event ${index+1}"><option value="none" ${barStyle==='none'?'selected':''}>None</option><option value="single" ${barStyle==='single'?'selected':''}>Shared</option><option value="double" ${barStyle==='double'?'selected':''}>Separate</option></select><button type="button" data-move-event="${index}" data-direction="-1" aria-label="Move event ${index+1} left">←</button><button type="button" data-move-event="${index}" data-direction="1" aria-label="Move event ${index+1} right">→</button></span></div>`;
     }).join('');
     const label=section==='chorus'?escapeHtml(data.chorusLabel):'Verse '+section;
-    return `<details class="editor-details"><summary>Hymn details</summary><div class="editor-fields">${input('Hymn number','number',data.number)}${input('Category','category',data.category)}${input('Title','title',data.title)}${input('English title','englishTitle',data.englishTitle)}${input('Lyricist','lyricist',data.lyricist)}${input('Lyricist dates','lyricistDates',data.lyricistDates)}${input('Key / Doh','key',data.key)}${input('Scripture','scripture',data.scripture)}${input('Source','source',data.source)}${input('Book page','page',data.page)}${input('Arrangement','arrangers',data.arrangers)}${input('Chorus label','chorusLabel',data.chorusLabel)}</div></details><section class="editor-reference" aria-label="Proofreading workspace"><figure><figcaption>Original scan <span class="scan-zoom"><button type="button" data-scan-zoom="-25" aria-label="Zoom out original scan">−</button><span id="scanZoomCaption">${editorScanZoom}%</span><button type="button" data-scan-zoom="25" aria-label="Zoom in original scan">+</button></span></figcaption><div class="editor-scan-viewport"><img id="editorScan" style="width:${editorScanZoom}%" src="${escapeHtml(activeScanSrc)}" alt="Original scan of hymn ${escapeHtml(data.number)}"></div></figure><section class="editor-edit-panel"><h3>${label} edit view</h3><p>Each row stays aligned as S, A, lyric, T, B.</p><div class="editor-table"><div class="editor-columns"><span>#</span><span>S</span><span>A</span><span>Lyric</span><span>T</span><span>B</span></div>${eventRows}</div></section></section>`;
+    return `<details class="editor-details"><summary>Hymn details</summary><div class="editor-fields">${input('Hymn number','number',data.number)}${input('Category','category',data.category)}${input('Title','title',data.title)}${input('English title','englishTitle',data.englishTitle)}${input('Lyricist','lyricist',data.lyricist)}${input('Lyricist dates','lyricistDates',data.lyricistDates)}${input('Key / Doh','key',data.key)}${input('Scripture','scripture',data.scripture)}${input('Source','source',data.source)}${input('Book page','page',data.page)}${input('Arrangement','arrangers',data.arrangers)}${input('Chorus label','chorusLabel',data.chorusLabel)}</div></details><section class="editor-reference" aria-label="Proofreading workspace"><figure><figcaption>Original scan <span class="scan-zoom"><button type="button" data-scan-zoom="-25" aria-label="Zoom out original scan">−</button><span id="scanZoomCaption">${editorScanZoom}%</span><button type="button" data-scan-zoom="25" aria-label="Zoom in original scan">+</button></span></figcaption><div class="editor-scan-viewport"><img id="editorScan" style="width:${editorScanZoom}%" src="${escapeHtml(activeScanSrc)}" alt="Original scan of hymn ${escapeHtml(data.number)}"></div></figure><section class="editor-edit-panel"><h3>${label} edit view</h3><p>Columns stay synchronized. Shared divides S/A and T/B; Separate divides S, A, T, and B individually. Arrows move the complete S/A/lyric/T/B column.</p><div class="editor-table"><div class="editor-columns"><span>#</span><span>S</span><span>A</span><span>Lyric</span><span>T</span><span>B</span><span>Structure</span></div>${eventRows}</div></section></section>`;
   }
   function openEditor() { editorBody.innerHTML=editorMarkup(); editorDialog.showModal(); }
   function savedDataLoad() { try { const saved=localStorage.getItem('chinHymn11-edits'); if(saved) data=JSON.parse(saved); } catch {} }
-  function saveEditor() {
+  function applyEditorForm() {
     const form=new FormData(document.getElementById('editorForm'));
     ['number','category','title','englishTitle','lyricist','lyricistDates','key','scripture','source','page','arrangers','chorusLabel'].forEach(key=>data[key]=String(form.get(key) ?? '').trim());
     const events=currentLines().flatMap(system=>system.events);
     events.forEach((event,index)=>{
       event.notes=event.notes.map((_,voice)=>String(form.get(`event-${index}-note-${voice}`) ?? '').trim());
       const lyric=String(form.get(`event-${index}-lyric`) ?? '').trim();
+      const barStyle=String(form.get(`event-${index}-bar-style`) ?? 'none');
+      if(barStyle==='none'){delete event.bar;delete event.barStyle;}else{event.bar=true;if(barStyle==='double')event.barStyle='double';else delete event.barStyle;}
       if(section==='chorus') event.chorusLyric=lyric;
       else if(section==='4') event.verse4=lyric;
       else { event.lyrics ??=['','','']; event.lyrics[Number(section)-1]=lyric; }
     });
-    settingsSave(dataStorageKey,JSON.stringify(data)); render(); editorDialog.close();
+  }
+  function saveEditor() {
+    applyEditorForm();settingsSave(dataStorageKey,JSON.stringify(data)); render(); editorDialog.close();
+  }
+  function moveEvent(index,direction) {
+    applyEditorForm();const events=currentLines().flatMap(system=>system.events);const target=index+direction;
+    if(target<0||target>=events.length)return;
+    [events[index],events[target]]=[events[target],events[index]];
+    let offset=0;for(const system of currentLines()){const count=system.events.length;system.events=events.slice(offset,offset+count);offset+=count;}
+    editorBody.innerHTML=editorMarkup();
   }
   function exportData() {
     const blob=new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'}); const url=URL.createObjectURL(blob);
@@ -257,6 +272,7 @@
   document.getElementById('exportEdits').addEventListener('click',exportData);
   document.getElementById('resetEdits').addEventListener('click',()=>{if(window.confirm('Remove all locally saved hymn edits from this device?')){try{localStorage.removeItem(dataStorageKey)}catch{}data=clone(originalData);dataStorageKey='chinHymn11-edits';render();editorBody.innerHTML=editorMarkup();}});
   editorBody.addEventListener('click',ev=>{const button=ev.target.closest('[data-scan-zoom]');if(!button)return;editorScanZoom=Math.max(50,Math.min(250,editorScanZoom+Number(button.dataset.scanZoom)));const image=document.getElementById('editorScan');const caption=document.getElementById('scanZoomCaption');if(image)image.style.width=editorScanZoom+'%';if(caption)caption.textContent=editorScanZoom+'%';});
+  editorBody.addEventListener('click',ev=>{const button=ev.target.closest('[data-move-event]');if(button)moveEvent(Number(button.dataset.moveEvent),Number(button.dataset.direction));});
   editorDialog.addEventListener('click',ev=>{if(ev.target===editorDialog)editorDialog.close()});
   document.getElementById('openImporter').addEventListener('click',()=>importDialog.showModal());
   document.getElementById('closeImporter').addEventListener('click',()=>importDialog.close());
