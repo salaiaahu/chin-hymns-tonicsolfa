@@ -19,11 +19,11 @@
     <h1 id="hymnTitle">KA THLARAU NGAI TUAH!</h1>
     <p id="englishTitle" class="subtitle">Hark, Hark! My Soul!</p>
     <div class="metadata" aria-label="Hymn information">
-      <div class="meta"><span class="meta-label">Words</span><span id="wordsMeta"></span></div>
-      <div class="meta"><span class="meta-label">Key</span><span id="keyMeta"></span></div>
-      <div class="meta"><span class="meta-label">Scripture</span><strong id="scriptureMeta"></strong></div>
-      <div class="meta"><span class="meta-label">Source</span><span id="sourceMeta"></span></div>
-      <div class="meta wide"><span class="meta-label">Arrangement</span><strong id="arrangersMeta"></strong></div>
+      <div id="wordsMeta" class="meta"></div>
+      <div id="keyMeta" class="meta"></div>
+      <div id="scriptureMeta" class="meta"></div>
+      <div id="sourceMeta" class="meta"></div>
+      <div id="arrangersMeta" class="meta wide"></div>
     </div>
   </header>
 
@@ -38,7 +38,7 @@
   </nav>
 
   <section id="reader" class="reader" role="tabpanel" aria-label="Selected hymn section">
-    <div class="score-head"><span class="section-name" id="sectionName">Verse 1</span><span class="section-caption" id="sectionCaption">Selected verse only · S / A / T / B</span></div>
+    <div class="score-head"><span class="section-name" id="sectionName">Verse 1</span><div class="score-options"><span class="section-caption" id="sectionCaption">Selected verse only</span><div class="voice-filter" role="group" aria-label="Show or hide sol-fa voices"><button type="button" data-voice="S" aria-pressed="true">S</button><button type="button" data-voice="A" aria-pressed="true">A</button><button type="button" data-voice="T" aria-pressed="true">T</button><button type="button" data-voice="B" aria-pressed="true">B</button></div></div></div>
     <p id="notice" class="notice" hidden>Verse 4 was printed separately below the music. Its lyrics are preserved, but their note-by-note placement is <strong>provisional</strong> and needs musical proofreading.</p>
     <div id="score" class="score" aria-label="Tonic sol-fa score"><div class="music-line">Loading notation…</div></div>
   </section>

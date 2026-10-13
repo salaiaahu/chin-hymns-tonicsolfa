@@ -20,6 +20,7 @@
   let timer;
   let lastWidth = 0;
   let measureCtx = document.createElement('canvas').getContext('2d');
+  let visibleVoices = {S:true,A:true,T:true,B:true};
 
   function clone(value) { return JSON.parse(JSON.stringify(value)); }
 
@@ -35,13 +36,14 @@
   function currentLines() {return section==='chorus' ? data.chorusScore : data.verseScore;}
   function renderHeader() {
     document.getElementById('hymnNumber').textContent=`${data.number} · ${data.category}`;
-    document.getElementById('hymnTitle').textContent=data.title;
+    const title=document.getElementById('hymnTitle');title.textContent=data.title;
+    title.dataset.titleLength=data.title.length>40?'very-long':data.title.length>27?'long':'';
     document.getElementById('englishTitle').textContent=data.englishTitle;
     document.getElementById('wordsMeta').innerHTML=`<strong>${escapeHtml(data.lyricist)}</strong>${data.lyricistDates ? ` · ${escapeHtml(data.lyricistDates)}` : ''}`;
-    document.getElementById('keyMeta').innerHTML=`<strong>${escapeHtml(data.key)}</strong> · Doh is ${escapeHtml(data.key)}`;
+    document.getElementById('keyMeta').innerHTML=`<strong>Doh is ${escapeHtml(data.key)}</strong>`;
     document.getElementById('scriptureMeta').textContent=data.scripture;
-    document.getElementById('sourceMeta').innerHTML=`<strong>${escapeHtml(data.source)}</strong> · Page ${escapeHtml(data.page)}`;
-    document.getElementById('arrangersMeta').textContent=data.arrangers;
+    document.getElementById('sourceMeta').innerHTML=`<strong>${escapeHtml(data.source)}</strong>${data.page ? ` · p. ${escapeHtml(data.page)}` : ''}`;
+    document.getElementById('arrangersMeta').innerHTML=data.arrangers?`Arr. ${escapeHtml(data.arrangers)}`:'';
     document.getElementById('chorusTab').textContent=data.chorusLabel || 'Chorus';
   }
   function lyricFor(event) {
@@ -101,9 +103,16 @@
     return rows;
   }
   function makeLine(events, originalSystem, final) {
-    const outer=document.createElement('div');outer.className='music-line'+(final?' last-of-original':'');
+    const outer=document.createElement('div');outer.className='music-line'+(final?' last-of-original':'')+(Object.values(visibleVoices).every(Boolean)?'':' filtered');
+    const rows=[];
+    if(visibleVoices.S)rows.push(['S','note',0,'var(--voice-height)']);
+    if(visibleVoices.A)rows.push(['A','note',1,'var(--voice-height)']);
+    rows.push([section==='chorus'?'♪':section+'.','lyric',null,'var(--lyric-height)']);
+    if(visibleVoices.T)rows.push(['T','note',2,'var(--voice-height)']);
+    if(visibleVoices.B)rows.push(['B','note',3,'var(--voice-height)']);
+    outer.style.setProperty('--score-rows',rows.map(row=>row[3]).join(' '));
     const labels=document.createElement('div');labels.className='voice-labels';labels.setAttribute('aria-hidden','true');
-    labels.innerHTML=`<span>S</span><span>A</span><span class="verse-mark">${section==='chorus'?'♪':section+'.'}</span><span>T</span><span>B</span>`;
+    rows.forEach(row=>{const label=document.createElement('span');label.textContent=row[0];if(row[1]==='lyric')label.className='verse-mark';labels.appendChild(label);});
     outer.appendChild(labels);
     const group=document.createElement('div');group.className='event-group';
     let width=0;for (const e of events) width+=preferredWidth(e);
@@ -113,12 +122,12 @@
     for (const e of events){
       const cell=document.createElement('div');cell.className='event'+(e.bar?' bar-before':'');
       cell.style.width=(preferredWidth(e)*factor)+'px';
-      const slots=[e.notes[0],e.notes[1],lyricFor(e),e.notes[2],e.notes[3]];
-      for (let i=0;i<slots.length;i++) {
+      for (const row of rows) {
+        const slot=row[1]==='lyric'?lyricFor(e):e.notes[row[2]];
         const el=document.createElement('div');
-        el.className=(i===2?'lyric':'note')+(!slots[i]?' blank':'');
-        el.textContent=slots[i]||'·';
-        if(i===2 && slots[i])el.title=slots[i];
+        el.className=row[1]+(!slot?' blank':'');
+        el.textContent=slot||'·';
+        if(row[1]==='lyric' && slot)el.title=slot;
         cell.appendChild(el);
       }
       group.appendChild(cell);
@@ -140,7 +149,7 @@
     score.appendChild(fragment);
     const chorus=section==='chorus';
     sectionName.textContent=chorus?`${data.chorusLabel} · Chorus`:`Verse ${section}`;
-    sectionCaption.textContent=chorus?'Chorus only · S / A / T / B':'Selected verse only · S / A / T / B';
+    sectionCaption.textContent=chorus?'Chorus only':'Selected verse only';
     notice.hidden=section!=='4';
     tabs.forEach(t=>{
       const isActive=t.dataset.section===section;
@@ -234,6 +243,7 @@
     document.getElementById('themeIcon').textContent=next==='dark'?'☀':'☾';
     settingsSave('chinHymn11-theme',next);
   });
+  document.querySelectorAll('[data-voice]').forEach(button=>button.addEventListener('click',()=>{const voice=button.dataset.voice;visibleVoices[voice]=!visibleVoices[voice];settingsSave('chinHymn11-voices',JSON.stringify(visibleVoices));document.querySelectorAll('[data-voice]').forEach(control=>control.setAttribute('aria-pressed',String(visibleVoices[control.dataset.voice])));render();}));
   document.getElementById('openScan').addEventListener('click',()=>{
     if(typeof dialog.showModal==='function') dialog.showModal();
     else {scanImage.hidden=false;window.open(scanImage.src,'_blank','noopener');}
@@ -256,6 +266,8 @@
   importForm.addEventListener('submit',ev=>{ev.preventDefault();if(importedFile)createImportedDraft();});
   savedDataLoad();
   const savedTheme=settingsGet('chinHymn11-theme','light');
+  try { visibleVoices={...visibleVoices,...JSON.parse(settingsGet('chinHymn11-voices','{}'))}; } catch {}
+  document.querySelectorAll('[data-voice]').forEach(control=>control.setAttribute('aria-pressed',String(visibleVoices[control.dataset.voice])));
   root.dataset.theme=savedTheme==='dark'?'dark':'light';
   document.getElementById('themeIcon').textContent=root.dataset.theme==='dark'?'☀':'☾';
   document.getElementById('themeToggle').setAttribute('aria-label',root.dataset.theme==='dark'?'Switch to light mode':'Switch to dark mode');
